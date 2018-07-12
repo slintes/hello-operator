@@ -1,3 +1,3 @@
-apiVersion: hello.slintes.net/v1alpha1
+apiVersion: slintes.net/v1alpha1
 kind: Hello
 projectName: hello-operator

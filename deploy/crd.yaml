@@ -1,9 +1,9 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: hellos.hello.slintes.net
+  name: hellos.slintes.net
 spec:
-  group: hello.slintes.net
+  group: slintes.net
   names:
     kind: Hello
     listKind: HelloList

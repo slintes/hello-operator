@@ -10,7 +10,7 @@ import (
 
 const (
 	version   = "v1alpha1"
-	groupName = "hello.slintes.net"
+	groupName = "slintes.net"
 )
 
 var (

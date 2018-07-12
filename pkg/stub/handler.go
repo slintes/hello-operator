@@ -44,7 +44,7 @@ func newbusyBoxPod(cr *v1alpha1.Hello) *corev1.Pod {
 			APIVersion: "v1",
 		},
 		ObjectMeta: metav1.ObjectMeta{
-			Name:      "busy-box",
+			Name:      "hello",
 			Namespace: cr.Namespace,
 			OwnerReferences: []metav1.OwnerReference{
 				*metav1.NewControllerRef(cr, schema.GroupVersionKind{
@@ -58,9 +58,10 @@ func newbusyBoxPod(cr *v1alpha1.Hello) *corev1.Pod {
 		Spec: corev1.PodSpec{
 			Containers: []corev1.Container{
 				{
-					Name:    "busybox",
+					Name:    "messenger",
 					Image:   "busybox",
-					Command: []string{"sleep", "3600"},
+					Command: []string{"/bin/sh"},
+					Args:    []string{"-c", "echo " + cr.Spec.Message + "; while true; do sleep 10; done"},
 				},
 			},
 		},

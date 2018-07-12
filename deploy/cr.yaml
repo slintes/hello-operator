@@ -1,4 +1,6 @@
-apiVersion: "hello.slintes.net/v1alpha1"
+apiVersion: "slintes.net/v1alpha1"
 kind: "Hello"
 metadata:
-  name: "example"
+  name: "hackathon"
+spec:
+  message: "hello from the hackathon!"

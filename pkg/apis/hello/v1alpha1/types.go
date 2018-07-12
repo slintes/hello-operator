@@ -22,8 +22,9 @@ type Hello struct {
 }
 
 type HelloSpec struct {
-	// Fill me
+	Message string `json:"message"`
 }
+
 type HelloStatus struct {
 	// Fill me
 }

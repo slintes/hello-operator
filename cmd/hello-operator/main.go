@@ -4,10 +4,10 @@ import (
 	"context"
 	"runtime"
 
-	stub "github.com/slintes/hello-operator/pkg/stub"
 	sdk "github.com/operator-framework/operator-sdk/pkg/sdk"
 	k8sutil "github.com/operator-framework/operator-sdk/pkg/util/k8sutil"
 	sdkVersion "github.com/operator-framework/operator-sdk/version"
+	stub "github.com/slintes/hello-operator/pkg/stub"
 
 	"github.com/sirupsen/logrus"
 )
@@ -23,7 +23,7 @@ func main() {
 
 	sdk.ExposeMetricsPort()
 
-	resource := "hello.slintes.net/v1alpha1"
+	resource := "slintes.net/v1alpha1"
 	kind := "Hello"
 	namespace, err := k8sutil.GetWatchNamespace()
 	if err != nil {
