@@ -24,19 +24,19 @@ type Handler struct {
 func (h *Handler) Handle(ctx context.Context, event sdk.Event) error {
 	switch o := event.Object.(type) {
 	case *v1alpha1.Hello:
-		err := sdk.Create(newbusyBoxPod(o))
+		err := sdk.Create(newHelloPod(o))
 		if err != nil && !errors.IsAlreadyExists(err) {
-			logrus.Errorf("Failed to create busybox pod : %v", err)
+			logrus.Errorf("Failed to create hello pod : %v", err)
 			return err
 		}
 	}
 	return nil
 }
 
-// newbusyBoxPod demonstrates how to create a busybox pod
-func newbusyBoxPod(cr *v1alpha1.Hello) *corev1.Pod {
+// newHelloPod creates a hello pod
+func newHelloPod(cr *v1alpha1.Hello) *corev1.Pod {
 	labels := map[string]string{
-		"app": "busy-box",
+		"app": "hello-" + cr.Name,
 	}
 	return &corev1.Pod{
 		TypeMeta: metav1.TypeMeta{
@@ -44,7 +44,7 @@ func newbusyBoxPod(cr *v1alpha1.Hello) *corev1.Pod {
 			APIVersion: "v1",
 		},
 		ObjectMeta: metav1.ObjectMeta{
-			Name:      "hello",
+			Name:      "hello-" + cr.Name,
 			Namespace: cr.Namespace,
 			OwnerReferences: []metav1.OwnerReference{
 				*metav1.NewControllerRef(cr, schema.GroupVersionKind{
