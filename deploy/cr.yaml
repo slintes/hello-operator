@@ -1,0 +1,4 @@
+apiVersion: "hello.slintes.net/v1alpha1"
+kind: "Hello"
+metadata:
+  name: "example"
